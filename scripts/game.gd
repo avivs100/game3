@@ -53,9 +53,9 @@ func _process(delta):
 	elif timer.wait_time < 0.5:
 		timer.wait_time = 0.5
 	
-	pb.scroll_offset.y += delta*scroll_speed
-	if pb.scroll_offset.y >= 960:
-		pb.scroll_offset.y = 0
+	#pb.scroll_offset.y += delta*scroll_speed
+	#if pb.scroll_offset.y >= 960:
+		#pb.scroll_offset.y = 0
 
 func _on_player_laser_shot(laser_scene, location):
 	var laser = laser_scene.instantiate()
