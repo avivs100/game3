@@ -57,8 +57,9 @@ func _process(delta):
 	#if pb.scroll_offset.y >= 960:
 		#pb.scroll_offset.y = 0
 
-func _on_player_laser_shot(laser_scene, location):
+func _on_player_laser_shot(laser_scene, location, muzzle_rotation_degrees):
 	var laser = laser_scene.instantiate()
+	laser.rotation_angle = muzzle_rotation_degrees
 	laser.global_position = location
 	laser_container.add_child(laser)
 	laser_sound.play()

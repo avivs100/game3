@@ -8,6 +8,8 @@ signal killed
 
 @onready var muzzle = $Muzzle
 
+var muzzle_rotation_degrees = 0
+
 var laser_scene = preload("res://scenes/laser.tscn")
 
 var shoot_cd := false
@@ -22,16 +24,16 @@ func _process(_delta):
 	
 func _physics_process(_delta):
 	var direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
-	velocity = direction * speed
 	if Input.is_action_pressed('ui_left'):
-		rotation_degrees += -1
+		muzzle_rotation_degrees += -1
 	if Input.is_action_pressed('ui_right'):
-		rotation_degrees += 1
+		muzzle_rotation_degrees += 1
+	velocity = direction * speed
 	move_and_slide()
 	global_position = global_position.clamp(Vector2.ZERO, get_viewport_rect().size)
 	
 func shoot():
-	laser_shot.emit(laser_scene, muzzle.global_position)
+	laser_shot.emit(laser_scene, muzzle.global_position, muzzle_rotation_degrees)
 
 func die():
 	killed.emit()
