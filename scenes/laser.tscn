@@ -3,9 +3,8 @@
 [ext_resource type="Script" path="res://scripts/laser.gd" id="1_4v2y7"]
 [ext_resource type="Texture2D" uid="uid://bygq0dc0q4u28" path="res://assets/textures/laserRed01.png" id="1_oib87"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nnupo"]
-radius = 3.0
-height = 44.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilk3j"]
+size = Vector2(7, 673)
 
 [node name="Laser" type="Area2D"]
 collision_layer = 4
@@ -13,19 +12,21 @@ collision_mask = 2
 script = ExtResource("1_4v2y7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -22)
-scale = Vector2(0.8, 0.8)
+position = Vector2(0, 15.2779)
+scale = Vector2(1, 20.2778)
 texture = ExtResource("1_oib87")
+offset = Vector2(0, -28)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -22)
-shape = SubResource("CapsuleShape2D_nnupo")
+position = Vector2(0.5, -334.5)
+shape = SubResource("RectangleShape2D_ilk3j")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, 11)
 scale = Vector2(0.4, 0.3)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
 gravity = Vector2(0, -980)
 scale_amount_min = 6.0
 scale_amount_max = 6.0

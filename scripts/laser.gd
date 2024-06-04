@@ -1,10 +1,9 @@
 extends Area2D
 
-@export var speed = 600
+@export var speed = 1200
 @export var damage = 1
 
 func _physics_process(delta):
-
 	global_position.y += -speed * delta# * cos(rotation_degrees * PI / 180)
 	#global_position.x += -speed * delta#d * sin(rotation_degrees * PI / 180)
 
