@@ -13,6 +13,7 @@ config_version=5
 config/name="Space Shooter Tutorial Youtube"
 run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [display]
