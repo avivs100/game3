@@ -54,7 +54,7 @@ texture_repeat = 2
 texture = ExtResource("6_mxb3t")
 centered = false
 region_enabled = true
-region_rect = Rect2(0, 0, 1500, 960)
+region_rect = Rect2(0, 0, 1280, 960)
 
 [node name="StarParticleEffect" type="GPUParticles2D" parent="."]
 position = Vector2(270, -50)
