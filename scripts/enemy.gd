@@ -1,14 +1,22 @@
-class_name Enemy extends Area2D
+class_name Enemy extends KinematicBody2D
 
 signal killed(points)
 signal hit
 
-@export var speed = 150
+@export var speed = 5.0
 @export var hp = 1
 @export var points = 100
+@export var GRAVITY = 2
+@export var SHOOT_FORCE = 1
+@export var FRICTION = 0.004
+var motion = Vector2.ZERO
+var yLoc = global_position.y
 
-func _physics_process(delta):
-	global_position.y += speed * delta
+#func _physics_process(delta):
+	#global_position.y += -speed * delta * GRAVITY
+	#global_position.x += -speed * delta 
+func setYloc(value):
+	yLoc = value
 
 func die():
 	queue_free()
@@ -28,3 +36,20 @@ func take_damage(amount):
 		die()
 	else:
 		hit.emit()
+		
+
+
+func _physics_process(delta):
+	global_position.x += -speed
+	#print(global_position.x)
+	if(is_on_floor()):
+		print(yLoc)
+	if yLoc > 200:
+		global_position.y = lerp(global_position.y, 0.0,speed/300)
+		yLoc = global_position.y
+	else:
+		global_position.y = lerp(global_position.y, 0.0,-speed/300)
+
+	# Move the rocket
+	#global_position.x += SHOOT_FORCE * delta
+	#global_position = move_and_slide(motion, Vector2.UP)	

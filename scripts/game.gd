@@ -9,7 +9,7 @@ extends Node2D
 @onready var hud = $UILayer/HUD
 @onready var gos = $UILayer/GameOverScreen
 @onready var pb = $ParallaxBackground
-
+@export var speed = 300
 @onready var laser_sound = $SFX/LaserSound
 @onready var hit_sound = $SFX/HitSound
 @onready var explode_sound = $SFX/ExplodeSound
@@ -65,7 +65,9 @@ func _on_player_laser_shot(laser_scene, location):
 
 func _on_enemy_spawn_timer_timeout():
 	var e = enemy_scenes.pick_random().instantiate()
-	e.global_position = Vector2(randf_range(50, 500), -50)
+	e.global_position = Vector2(1000,randf_range(300, 650))
+	e.setYloc(e.global_position.y)
+	#global_position.x += -speed * delta#d * sin(rotation_degrees * PI / 180)
 	e.killed.connect(_on_enemy_killed)
 	e.hit.connect(_on_enemy_hit)
 	enemy_container.add_child(e)

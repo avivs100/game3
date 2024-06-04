@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://3cpyfbyh7kj7" path="res://assets/textures/spaceShips_004.png" id="2_xwoqn"]
 
 [node name="DiverEnemy" instance=ExtResource("1_e8eha")]
-speed = 400
 hp = 1
 points = 200
 
