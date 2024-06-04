@@ -1,4 +1,4 @@
-class_name Enemy extends KinematicBody2D
+class_name Enemy extends Area2D
 
 signal killed(points)
 signal hit
@@ -9,12 +9,17 @@ signal hit
 @export var GRAVITY = 2
 @export var SHOOT_FORCE = 1
 @export var FRICTION = 0.004
+@export var Hy = 0.0
 var motion = Vector2.ZERO
 var yLoc = global_position.y
 
 #func _physics_process(delta):
 	#global_position.y += -speed * delta * GRAVITY
 	#global_position.x += -speed * delta 
+	
+func setSpeed(value):
+	speed = value
+	
 func setYloc(value):
 	yLoc = value
 
@@ -38,13 +43,12 @@ func take_damage(amount):
 		hit.emit()
 		
 
-
+func setHy(value):
+	Hy = value
+	
 func _physics_process(delta):
 	global_position.x += -speed
-	#print(global_position.x)
-	if(is_on_floor()):
-		print(yLoc)
-	if yLoc > 200:
+	if yLoc > Hy:
 		global_position.y = lerp(global_position.y, 0.0,speed/300)
 		yLoc = global_position.y
 	else:

@@ -65,8 +65,11 @@ func _on_player_laser_shot(laser_scene, location):
 
 func _on_enemy_spawn_timer_timeout():
 	var e = enemy_scenes.pick_random().instantiate()
-	e.global_position = Vector2(1000,randf_range(300, 650))
+	var rnd = randf_range(300, 650)
+	e.global_position = Vector2(1000,rnd)
 	e.setYloc(e.global_position.y)
+	e.setHy(e.global_position.y-200)
+	e.setSpeed(randf_range(2, 10))
 	#global_position.x += -speed * delta#d * sin(rotation_degrees * PI / 180)
 	e.killed.connect(_on_enemy_killed)
 	e.hit.connect(_on_enemy_hit)
