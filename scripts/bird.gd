@@ -9,6 +9,7 @@ signal hit
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var hack = null
+var progressBar = null
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -48,6 +49,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
 
 func take_damage(amount):
+	progressBar.set_full()
 	hp -= amount   
 	if hp <= 0:
 		killed.emit(points)

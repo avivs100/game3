@@ -10,6 +10,8 @@ func _ready():
 func canShot():
 	return value>=10
 	
+func set_full():
+	value = maxValue
 
 func dec():
 	value -=10;

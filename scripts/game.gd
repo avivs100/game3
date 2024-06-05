@@ -32,6 +32,7 @@ func _ready():
 		high_score = 0
 		save_game()
 	$Bird.hack = $UILayer/Hack
+	$Bird.progressBar = progressBar
 	$Bird/BirdTimer.start()
 	
 	score = 0
