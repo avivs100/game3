@@ -1,4 +1,4 @@
-class_name Enemy extends Area2D
+class_name DiverEnemy extends Area2D
 
 signal killed(points)
 signal hit
@@ -48,11 +48,11 @@ func setHy(value):
 	
 func _physics_process(delta):
 	global_position.x += -speed
-	if yLoc > Hy:
-		global_position.y = lerp(global_position.y, 0.0,speed/300)
-		yLoc = global_position.y
-	else:
-		global_position.y = lerp(global_position.y, 0.0,-speed/300)
+	#if yLoc > Hy:
+		#global_position.y = lerp(global_position.y, 0.0,speed/300)
+		#yLoc = global_position.y
+	#else:
+		#global_position.y = lerp(global_position.y, 0.0,-speed/300)
 
 	# Move the rocket
 	#global_position.x += SHOOT_FORCE * delta

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cm23pqetbflrq"]
 
-[ext_resource type="Texture2D" uid="uid://c1518wbja6dd" path="res://assets/textures/spaceShips_001.png" id="1_01v5v"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_tetyj"]
+[ext_resource type="Texture2D" uid="uid://dm0eckqq2rxi2" path="res://assets/weapons/blue-rocket.png" id="2_oiktt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kou1a"]
 radius = 29.0
@@ -10,11 +10,10 @@ radius = 29.0
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_tetyj")
-hp = 2
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("1_01v5v")
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_oiktt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kou1a")

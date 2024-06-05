@@ -33,6 +33,7 @@ func _physics_process(_delta):
 	global_position = global_position.clamp(Vector2.ZERO, get_viewport_rect().size)
 	
 func shoot():
+	print("david")
 	laser_shot.emit(laser_scene, muzzle.global_position, muzzle_rotation_degrees)
 
 func die():
