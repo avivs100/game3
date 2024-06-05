@@ -76,6 +76,8 @@ scale = Vector2(0.552, 0.444)
 skew = 0.0628318
 texture = ExtResource("12_cjp8t")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird/BirdSprite"]
+
 [node name="BirdTimer" type="Timer" parent="Bird"]
 wait_time = 2.0
 one_shot = true
