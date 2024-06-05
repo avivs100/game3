@@ -85,14 +85,13 @@ offset_bottom = 40.0
 [node name="ProgressBar" type="ProgressBar" parent="LoadingScene"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -2.1
-anchor_top = 15.65
-anchor_right = -2.1
-anchor_bottom = 15.65
-offset_left = 444.0
-offset_top = -566.0
-offset_right = 1046.0
-offset_bottom = -525.0
+anchor_left = 9.0
+anchor_top = 2.012
+anchor_right = 24.05
+anchor_bottom = 2.525
+offset_left = 4.0
+offset_top = -12.48
+offset_right = -6.10352e-05
 script = ExtResource("12_4mld6")
 
 [node name="Label" type="Label" parent="LoadingScene/ProgressBar"]
