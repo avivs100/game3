@@ -30,6 +30,7 @@ func _ready():
 	else:
 		high_score = 0
 		save_game()
+	$Bird.hack = $UILayer/Hack
 	$Bird/BirdTimer.start()
 	
 	score = 0
@@ -53,13 +54,14 @@ func _process(delta):
 		timer.wait_time -= delta*0.005
 	elif timer.wait_time < 0.5:
 		timer.wait_time = 0.5
-	if 	$Bird.visible == true:
-		$Bird.velocity = Vector2(100,0)
-		$Bird.move_and_slide()
-		if $Bird.global_position.x > 1600:
-			$Bird.global_position.x = -144
-			$Bird.visible == false
-			$Bird/BirdTimer.start()
+	if 	$Bird:
+		if 	$Bird.visible == true:
+			$Bird.velocity = Vector2(100,0)
+			$Bird.move_and_slide()
+			if $Bird.global_position.x > 1600:
+				$Bird.global_position.x = -144
+				$Bird.visible == false
+				$Bird/BirdTimer.start()
 	#pb.scroll_offset.y += delta*scroll_speed
 	#if pb.scroll_offset.y >= 960:
 		#pb.scroll_offset.y = 0
@@ -92,6 +94,7 @@ func _on_enemy_killed(points):
 func _on_enemy_hit():
 	hit_sound.play()
 
+
 func _on_player_killed():
 	explode_sound.play()
 	gos.set_score(score)
@@ -103,3 +106,5 @@ func _on_player_killed():
 
 func _on_bird_timer_timeout():
 	$Bird.visible = true
+	
+	

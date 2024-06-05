@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5dp6au2e1wi5"]
+
+[ext_resource type="Script" path="res://scripts/Hack.gd" id="1_jg51g"]
+[ext_resource type="Texture2D" uid="uid://c8l3lspmnuj7o" path="res://assets/textures/combined2.png" id="2_hhltx"]
+
+[node name="Hack" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_jg51g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5.99998, 25)
+scale = Vector2(1.09472, 0.946368)
+texture = ExtResource("2_hhltx")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

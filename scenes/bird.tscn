@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmy734j7apq07"]
+
+[ext_resource type="Script" path="res://scripts/bird.gd" id="1_208mt"]
+[ext_resource type="Texture2D" uid="uid://j3ceo2h34erh" path="res://assets/textures/bird.png" id="2_ulsoi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8q5v"]
+size = Vector2(186, 162)
+
+[node name="Bird" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_208mt")
+
+[node name="BirdSprite" type="Sprite2D" parent="."]
+position = Vector2(-144, 107)
+rotation = -0.127409
+scale = Vector2(0.552, 0.444)
+skew = 0.0628318
+texture = ExtResource("2_ulsoi")
+
+[node name="BirdTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-134, 101)
+shape = SubResource("RectangleShape2D_s8q5v")
