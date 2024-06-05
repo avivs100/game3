@@ -5,7 +5,6 @@ extends Area2D
 @export var rotation_angle = 0
 
 func _physics_process(delta):
-
 	global_position.y += -speed * delta# * cos(rotation_degrees * PI / 180)
 	global_position.x += -speed * delta# * sin(rotation_degrees * PI / 180)
 	rotation_degrees = rotation_angle
