@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxuuwmlma1xmm"]
+[gd_scene load_steps=13 format=3 uid="uid://bxuuwmlma1xmm"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_15kp8"]
 [ext_resource type="PackedScene" uid="uid://ceuh25br64vvt" path="res://scenes/player.tscn" id="2_oqgyc"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c6uejmh8c7koe" path="res://scenes/game_over_screen.tscn" id="5_wfc6m"]
 [ext_resource type="AudioStream" uid="uid://b1wymalc4ru36" path="res://assets/audio/explode.wav" id="6_tmg8f"]
 [ext_resource type="Texture2D" uid="uid://c0c5gggb417og" path="res://assets/textures/OIG4.png" id="10_lgq8g"]
+[ext_resource type="Texture2D" uid="uid://j3ceo2h34erh" path="res://assets/textures/bird.png" id="12_cjp8t"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_15kp8")
@@ -65,4 +66,19 @@ position = Vector2(270, 850)
 [node name="EnemyContainer" type="Node2D" parent="."]
 position = Vector2(1, -1)
 
+[node name="Bird" type="CharacterBody2D" parent="."]
+visible = false
+
+[node name="BirdSprite" type="Sprite2D" parent="Bird"]
+position = Vector2(-144, 107)
+rotation = -0.127409
+scale = Vector2(0.552, 0.444)
+skew = 0.0628318
+texture = ExtResource("12_cjp8t")
+
+[node name="BirdTimer" type="Timer" parent="Bird"]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="timeout" from="Bird/BirdTimer" to="." method="_on_bird_timer_timeout"]

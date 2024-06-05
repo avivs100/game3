@@ -30,6 +30,7 @@ func _ready():
 	else:
 		high_score = 0
 		save_game()
+	$Bird/BirdTimer.start()
 	
 	score = 0
 	player = get_tree().get_first_node_in_group("player")
@@ -52,7 +53,13 @@ func _process(delta):
 		timer.wait_time -= delta*0.005
 	elif timer.wait_time < 0.5:
 		timer.wait_time = 0.5
-	
+	if 	$Bird.visible == true:
+		$Bird.velocity = Vector2(100,0)
+		$Bird.move_and_slide()
+		if $Bird.global_position.x > 1600:
+			$Bird.global_position.x = -144
+			$Bird.visible == false
+			$Bird/BirdTimer.start()
 	#pb.scroll_offset.y += delta*scroll_speed
 	#if pb.scroll_offset.y >= 960:
 		#pb.scroll_offset.y = 0
@@ -87,3 +94,7 @@ func _on_player_killed():
 	save_game()
 	await get_tree().create_timer(1.5).timeout
 	gos.visible = true
+
+
+func _on_bird_timer_timeout():
+	$Bird.visible = true
