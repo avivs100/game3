@@ -1,4 +1,4 @@
-extends Area2D
+class_name DiverEnemy extends Area2D
 
 signal killed(points)
 signal hit
@@ -12,6 +12,8 @@ signal hit
 @export var Hy = 0.0
 @export var rotation_angle = 0
 var yLoc = global_position.y
+var progressBar =null
+
 
 
 func setHy(value):
@@ -24,9 +26,12 @@ func setYloc(value):
 	yLoc = value
 
 func die():
+	progressBar.inc()
+	progressBar.inc()
 	queue_free()
 	
 func take_damage(amount):
+	#print($"../LoadingScene/ProgressBar".value == null)
 	hp -= amount
 	if hp <= 0:
 		killed.emit(points)
@@ -35,9 +40,17 @@ func take_damage(amount):
 		hit.emit()
 
 func _physics_process(delta):
-	global_position.y += -speed * delta * cos(-rotation_angle * PI / 180)
-	global_position.x += -speed * delta * sin(-rotation_angle * PI / 180)
-	rotation_degrees = rotation_angle
+	if global_position.x >= Global.PxP.x:
+		global_position.x += -speed
+	if global_position.x < Global.PxP.x:
+		global_position.y += speed
+	
+
+func _on_body_entered(body):
+	if body is Player:
+		body.die()
+		die()
+
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()

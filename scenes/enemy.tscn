@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dm0eckqq2rxi2" path="res://assets/weapons/blue-rocket.png" id="2_oiktt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_we0dl"]
-radius = 13.15
+radius = 38.8045
 height = 121.653
 
 [node name="Enemy" type="Area2D"]

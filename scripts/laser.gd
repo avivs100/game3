@@ -1,5 +1,4 @@
 extends Area2D
-#extends CharacterBody2D
 
 @onready var sprite = $Sprite2D/Node2D;
 @onready var collision = $CollisionShape2D
