@@ -15,6 +15,7 @@ extends Node2D
 @onready var explode_sound = $SFX/ExplodeSound
 
 var player = null
+
 var score := 0:
 	set(value):
 		score = value
@@ -73,8 +74,8 @@ func _on_player_laser_shot(laser_scene, location, muzzle_rotation_degrees):
 
 func _on_enemy_spawn_timer_timeout():
 	var e = enemy_scenes.pick_random().instantiate()
-	var rnd = randf_range(300, 650)
-	e.global_position = Vector2(1000,rnd)
+	var rnd = randf_range(300, 450)
+	e.global_position = Vector2(1280,rnd)
 	e.setYloc(e.global_position.y)
 	e.setHy(e.global_position.y-200)
 	e.setSpeed(randf_range(2, 10))

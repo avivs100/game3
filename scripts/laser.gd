@@ -20,3 +20,6 @@ func _on_area_entered(area):
 	if area is Enemy:
 		area.take_damage(damage)
 		queue_free()
+	if area is DiverEnemy:
+		area.take_damage(damage)
+		queue_free()

@@ -5,7 +5,6 @@ signal killed
 
 @export var speed = 300
 @export var rate_of_fire := 0.25
-
 @onready var muzzle = $Muzzle
 
 var muzzle_rotation_degrees = 0
@@ -23,7 +22,7 @@ func _process(_delta):
 			shoot_cd = false
 	
 func _physics_process(_delta):
-	var direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
+	var direction = Vector2(Input.get_axis("move_left", "move_right"), 0)
 	if Input.is_action_pressed('ui_left'):
 		muzzle_rotation_degrees += -1
 	if Input.is_action_pressed('ui_right'):
@@ -31,9 +30,10 @@ func _physics_process(_delta):
 	velocity = direction * speed
 	move_and_slide()
 	global_position = global_position.clamp(Vector2.ZERO, get_viewport_rect().size)
+	Global.PxP = global_position
 	
 func shoot():
-	print("david")
+	#$ProgressBar.value -= 10 
 	laser_shot.emit(laser_scene, muzzle.global_position, muzzle_rotation_degrees)
 
 func die():
