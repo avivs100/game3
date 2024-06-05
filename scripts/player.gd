@@ -8,6 +8,7 @@ signal killed
 @onready var muzzle = $Muzzle
 
 var muzzle_rotation_degrees = 0
+var progressBar = null
 
 var laser_scene = preload("res://scenes/laser.tscn")
 
@@ -33,8 +34,9 @@ func _physics_process(_delta):
 	Global.PxP = global_position
 	
 func shoot():
-	#$ProgressBar.value -= 10 
-	laser_shot.emit(laser_scene, muzzle.global_position, muzzle_rotation_degrees)
+	if progressBar.canShot():
+		progressBar.dec() 
+		laser_shot.emit(laser_scene, muzzle.global_position, muzzle_rotation_degrees)
 
 func die():
 	killed.emit()

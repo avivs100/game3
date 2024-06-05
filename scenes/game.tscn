@@ -89,18 +89,25 @@ anchor_left = -2.1
 anchor_top = 15.65
 anchor_right = -2.1
 anchor_bottom = 15.65
-offset_left = 410.0
-offset_top = 368.0
-offset_right = 1048.0
-offset_bottom = 435.0
+offset_left = 444.0
+offset_top = -566.0
+offset_right = 1046.0
+offset_bottom = -525.0
 script = ExtResource("12_4mld6")
 
 [node name="Label" type="Label" parent="LoadingScene/ProgressBar"]
-layout_mode = 0
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = -257.0
 offset_top = 8.0
-offset_right = -131.0
-offset_bottom = 49.0
+offset_right = -769.0
+offset_bottom = -18.0
+
+[node name="Timer" type="Timer" parent="LoadingScene/ProgressBar"]
+wait_time = 5.0
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="Bird/BirdTimer" to="." method="_on_bird_timer_timeout"]

@@ -13,7 +13,7 @@ extends Node2D
 @onready var laser_sound = $SFX/LaserSound
 @onready var hit_sound = $SFX/HitSound
 @onready var explode_sound = $SFX/ExplodeSound
-
+@onready var progressBar = $LoadingScene/ProgressBar
 var player = null
 
 var score := 0:
@@ -36,6 +36,7 @@ func _ready():
 	score = 0
 	player = get_tree().get_first_node_in_group("player")
 	assert(player!=null)
+	player.progressBar = progressBar
 	player.global_position = player_spawn_pos.global_position
 	player.laser_shot.connect(_on_player_laser_shot)
 	player.killed.connect(_on_player_killed)
@@ -74,6 +75,7 @@ func _on_player_laser_shot(laser_scene, location, muzzle_rotation_degrees):
 
 func _on_enemy_spawn_timer_timeout():
 	var e = enemy_scenes.pick_random().instantiate()
+	e.progressBar = progressBar
 	var rnd = randf_range(300, 450)
 	e.global_position = Vector2(1280,rnd)
 	e.setYloc(e.global_position.y)
@@ -85,6 +87,7 @@ func _on_enemy_spawn_timer_timeout():
 	enemy_container.add_child(e)
 
 func _on_enemy_killed(points):
+	#$"../LoadingScene/ProgressBar".inc() 
 	hit_sound.play()
 	score += points
 	if score > high_score:

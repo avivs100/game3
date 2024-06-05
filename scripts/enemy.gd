@@ -12,7 +12,7 @@ signal hit
 @export var Hy = 0.0
 var motion = Vector2.ZERO
 var yLoc = global_position.y
-
+var progressBar =null
 #func _physics_process(delta):
 	#global_position.y += -speed * delta * GRAVITY
 	#global_position.x += -speed * delta 
@@ -23,7 +23,9 @@ func setSpeed(value):
 func setYloc(value):
 	yLoc = value
 
-func die():
+func die():	
+	progressBar.inc()
+	progressBar.inc()
 	queue_free()
 
 func _on_body_entered(body):
@@ -34,7 +36,7 @@ func _on_body_entered(body):
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
 
-func take_damage(amount):
+func take_damage(amount): 
 	hp -= amount
 	if hp <= 0:
 		killed.emit(points)
@@ -55,7 +57,6 @@ func _physics_process(delta):
 	else:
 		global_position.y = lerp(global_position.y, 0.0,-speed/300)
 		if (rotation_degrees > -110):
-			print(rotation_degrees)
 			rotation_degrees-=0.15*speed
 
 	# Move the rocket

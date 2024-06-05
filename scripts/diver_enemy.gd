@@ -12,6 +12,7 @@ signal hit
 @export var Hy = 0.0
 @export var rotation_angle = 0
 var yLoc = global_position.y
+var progressBar =null
 
 
 
@@ -25,9 +26,12 @@ func setYloc(value):
 	yLoc = value
 
 func die():
+	progressBar.inc()
+	progressBar.inc()
 	queue_free()
 	
 func take_damage(amount):
+	#print($"../LoadingScene/ProgressBar".value == null)
 	hp -= amount
 	if hp <= 0:
 		killed.emit(points)
