@@ -6,6 +6,9 @@
 
 [node name="DiverEnemy" instance=ExtResource("1_e8eha")]
 script = ExtResource("2_rve5n")
+speed = 1200
+damage = 1
+rotation_angle = 0
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2(0.1, 0.1)

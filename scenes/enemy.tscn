@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_tetyj"]
 [ext_resource type="Texture2D" uid="uid://dm0eckqq2rxi2" path="res://assets/weapons/blue-rocket.png" id="2_oiktt"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kou1a"]
-radius = 29.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_we0dl"]
+radius = 13.15
+height = 121.653
 
 [node name="Enemy" type="Area2D"]
 collision_layer = 2
@@ -16,7 +17,9 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_oiktt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_kou1a")
+position = Vector2(-2, -3)
+rotation = -0.698132
+shape = SubResource("CapsuleShape2D_we0dl")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, -52)

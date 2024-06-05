@@ -51,8 +51,10 @@ func _physics_process(delta):
 	if yLoc > Hy:
 		global_position.y = lerp(global_position.y, 0.0,speed/300)
 		yLoc = global_position.y
+		rotation_degrees-=0.3*speed
 	else:
 		global_position.y = lerp(global_position.y, 0.0,-speed/300)
+		rotation_degrees-=0.15*speed
 
 	# Move the rocket
 	#global_position.x += SHOOT_FORCE * delta
