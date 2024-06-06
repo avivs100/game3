@@ -13,7 +13,9 @@ extends Node2D
 @onready var laser_sound = $SFX/LaserSound
 @onready var hit_sound = $SFX/HitSound
 @onready var explode_sound = $SFX/ExplodeSound
+@onready var arcade_sound = $SFX/Arcade
 @onready var progressBar = $LoadingScene/ProgressBar
+@onready var stTimer = $StartScreen/StartScreen/StTimer
 var player = null
 
 var score := 0:
@@ -25,6 +27,7 @@ var high_score
 var scroll_speed = 100
 
 func _ready():
+	
 	var save_file = FileAccess.open("user://save.data", FileAccess.READ)
 	if save_file!=null:
 		high_score = save_file.get_32()
@@ -34,6 +37,7 @@ func _ready():
 	$Bird.hack = $UILayer/Hack
 	$Bird.progressBar = progressBar
 	$Bird/BirdTimer.start()
+	arcade_sound.play()
 	
 	score = 0
 	player = get_tree().get_first_node_in_group("player")
@@ -41,7 +45,7 @@ func _ready():
 	player.progressBar = progressBar
 	player.global_position = player_spawn_pos.global_position
 	player.laser_shot.connect(_on_player_laser_shot)
-	player.killed.connect(_on_player_killed)
+	player.killed.connect(_on_player_killed)	
 
 func save_game():
 	var save_file = FileAccess.open("user://save.data", FileAccess.WRITE)
@@ -64,6 +68,7 @@ func _process(delta):
 			if $Bird.global_position.x > 1600:
 				$Bird.global_position.x = -144
 				$Bird.visible == false
+				$Bird.hp=5
 				$Bird/BirdTimer.start()
 	#pb.scroll_offset.y += delta*scroll_speed
 	#if pb.scroll_offset.y >= 960:
@@ -77,6 +82,8 @@ func _on_player_laser_shot(laser_scene, location, muzzle_rotation_degrees):
 	laser_sound.play()
 
 func _on_enemy_spawn_timer_timeout():
+	timer.start()
+	await timer.timeout
 	var e = enemy_scenes.pick_random().instantiate()
 	e.progressBar = progressBar
 	var rnd = randf_range(300, 450)

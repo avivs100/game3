@@ -3,7 +3,7 @@ class_name Bird extends  CharacterBody2D #
 signal killed(points)
 signal hit
 
-@export var hp = 8
+@export var hp = 5
 @export var points = 100
 @export var GRAVITY = 2
 const SPEED = 300.0
@@ -35,9 +35,9 @@ var progressBar = null
 	#move_and_slide()
 
 func die():
-	#queue_free()
 	hack.start()
-	global_position.x = -144
+	global_position.x = -1448
+	hp = 5
 	
 
 func _on_body_entered(body):
