@@ -8,9 +8,11 @@ extends Node2D
 @onready var enemy_container = $EnemyContainer
 @onready var hud = $UILayer/HUD
 @onready var gos = $UILayer/GameOverScreen
+@onready var gss = $UILayer/GameStartrScreen
 @onready var pb = $ParallaxBackground
 @export var speed = 300
 @onready var laser_sound = $SFX/LaserSound
+@onready var arcade_sound = $SFX/Arcade
 @onready var hit_sound = $SFX/HitSound
 @onready var explode_sound = $SFX/ExplodeSound
 @onready var progressBar = $LoadingScene/ProgressBar
@@ -40,6 +42,7 @@ func _ready():
 	player.global_position = player_spawn_pos.global_position
 	player.laser_shot.connect(_on_player_laser_shot)
 	player.killed.connect(_on_player_killed)
+	arcade_sound.play()
 
 func save_game():
 	var save_file = FileAccess.open("user://save.data", FileAccess.WRITE)

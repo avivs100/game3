@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxuuwmlma1xmm"]
+[gd_scene load_steps=14 format=3 uid="uid://bxuuwmlma1xmm"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_15kp8"]
 [ext_resource type="PackedScene" uid="uid://ceuh25br64vvt" path="res://scenes/player.tscn" id="2_oqgyc"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://137oamlwx2hu" path="res://assets/audio/hit.wav" id="5_f6dy0"]
 [ext_resource type="PackedScene" uid="uid://c6uejmh8c7koe" path="res://scenes/game_over_screen.tscn" id="5_wfc6m"]
 [ext_resource type="AudioStream" uid="uid://b1wymalc4ru36" path="res://assets/audio/explode.wav" id="6_tmg8f"]
+[ext_resource type="AudioStream" uid="uid://cmph4t8vq6q71" path="res://assets/audio/arcade.mp3" id="7_gtdjt"]
 [ext_resource type="Texture2D" uid="uid://c0c5gggb417og" path="res://assets/textures/OIG4.png" id="10_lgq8g"]
 [ext_resource type="Script" path="res://scripts/ProgressBar.gd" id="12_4mld6"]
 [ext_resource type="Texture2D" uid="uid://j3ceo2h34erh" path="res://assets/textures/bird.png" id="12_cjp8t"]
@@ -27,6 +28,9 @@ stream = ExtResource("5_f6dy0")
 
 [node name="ExplodeSound" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("6_tmg8f")
+
+[node name="Arcade" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("7_gtdjt")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
@@ -104,6 +108,8 @@ offset_left = -257.0
 offset_top = 8.0
 offset_right = -769.0
 offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Timer" type="Timer" parent="LoadingScene/ProgressBar"]
 wait_time = 5.0
